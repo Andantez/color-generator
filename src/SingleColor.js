@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-const SingleColor = ({ weight, hex, index, rgb }) => {
+const SingleColor = ({ weight, hex, rgb, type }) => {
   const [alert, setAlert] = useState(false);
   const hexColor = `#${hex}`;
   const rgbColor = rgb.join(',');
 
+  // Copy color hex value to clipboard on Click
   const handleCopy = () => {
     setAlert(true);
     navigator.clipboard.writeText(hexColor);
-    console.log(hexColor);
   };
 
+  // Clean up timeout function
   useEffect(() => {
     const clearAlert = setTimeout(() => {
       setAlert(false);
@@ -19,10 +20,11 @@ const SingleColor = ({ weight, hex, index, rgb }) => {
 
     return () => clearTimeout(clearAlert);
   }, [alert]);
+
   return (
     <Wrapper
       onClick={handleCopy}
-      index={index}
+      type={type}
       style={{ background: `rgb(${rgbColor})` }}
     >
       <p>{weight}%</p>
@@ -33,12 +35,11 @@ const SingleColor = ({ weight, hex, index, rgb }) => {
 };
 
 const Wrapper = styled.article`
-  /* Adapt the color based on index prop for better Visability and Readability  */
+  /* Adapt the text color based on type prop for better Visability and Readability  */
 
-  height: 200px;
   padding: 1rem 2rem;
   font-family: 'RocknRoll One', sans-serif;
-  color: ${(props) => props.index > 10 && '#fff'};
+  color: ${(props) => props.type === 'shade' && '#fff'};
 
   p {
     margin-bottom: 10px;

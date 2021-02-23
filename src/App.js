@@ -7,9 +7,9 @@ const App = () => {
   const [colors, setColors] = useState(new Values('#4287f5').all(10));
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState(false);
-  // TODO - Find a proper variable name
-  const [randomC, setRandomC] = useState('');
-  // -----------------------------------
+  const [colorWeight, setColorWeight] = useState(10);
+  const [mainColor, setMainColor] = useState('#4287f5');
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!userInput) {
@@ -17,24 +17,38 @@ const App = () => {
     }
     try {
       setError(false);
-      const colorsList = new Values(userInput).all(10);
-      console.log(colorsList);
+      const colorsList = new Values(userInput).all(colorWeight);
       setColors(colorsList);
+      setMainColor(userInput);
     } catch (error) {
+      console.log(error);
       setError(true);
     }
   };
 
-  // TODO- Change handleSubmit to handle the random color generation
-  // if not to fix generateRandomColor to handle Errors
   const generateRandomColor = () => {
     const randomColor = `#${Math.floor(Math.random() * 2 ** 24)
       .toString(16)
       .padStart(6, '0')}`;
-    setRandomC(randomColor);
-    setColors(new Values(randomColor).all(10));
+    setColors(new Values(randomColor).all(colorWeight));
+    setMainColor(randomColor);
   };
 
+  const handleColorRange = (e) => {
+    setColorWeight((oldValue) => {
+      let tempValue = Number(e.target.value);
+      if (tempValue < 2) {
+        return oldValue;
+      } else {
+        return tempValue;
+      }
+    });
+  };
+  // Sets colors when user changes the color weight
+  useEffect(() => {
+    setColors(new Values(mainColor).all(colorWeight));
+  }, [colorWeight, mainColor]);
+  // Clean up
   useEffect(() => {
     const cleanUpFunc = setTimeout(() => {
       setError(false);
@@ -46,7 +60,7 @@ const App = () => {
     <Wrapper>
       <header>
         <h1>
-          <a href="/">Color Shades Generator</a>
+          <a href="/">Tint & Shade Generator</a>
         </h1>
       </header>
       <section className="form-container">
@@ -56,23 +70,38 @@ const App = () => {
           )}
           <label htmlFor="color">enter hex color</label>
           <input
-            className={`${error && 'show'}`}
+            className={`user-input ${error && 'show'}`}
             type="text"
             id="color"
             placeholder="#4287f5"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
           />
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn">
+            Submit
+          </button>
+          <button
+            type="button"
+            onClick={generateRandomColor}
+            className="random-btn"
+          >
+            Generate Random Color
+          </button>
+          <div className="form-control">
+            <h4>Color Weight</h4>
+            <div>
+              <input
+                className="range-input"
+                type="range"
+                min="2"
+                max="50"
+                value={colorWeight}
+                onChange={handleColorRange}
+              />
+              <span className="range-value">{colorWeight}%</span>
+            </div>
+          </div>
         </form>
-        {/* Generates Random Coolor On Click
-            Functionality working
-            TODO- ADD styling 
-            --------------------
-            <button type="button" onClick={generateRandomColor}> Generate Random Color</button>
-            <h3>{randomC}</h3>
-            --------------------
-        */}
       </section>
       <section className="container">
         {colors.map((color, index) => {
@@ -98,6 +127,8 @@ const Wrapper = styled.main`
       #c0326f,
       #a32f7f
     );
+    box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+      6px 6px 10px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding: 0 3rem;
     margin: 3rem auto;
@@ -117,59 +148,97 @@ const Wrapper = styled.main`
     margin-top: 3rem;
 
     form {
-      display: flex;
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'label label'
+        'input input'
+        'submitBtn randomBtn'
+        'range range';
+      margin: 0 auto;
       position: relative;
       text-transform: capitalize;
       font-family: 'RocknRoll One', sans-serif;
-
+      text-align: center;
       label {
         margin: 0 1rem;
         color: #080808;
         font-size: 1.5rem;
+        grid-area: label;
       }
 
-      input {
+      .user-input {
+        grid-area: input;
         min-width: 300px;
         font-size: 1.1rem;
         padding-left: 0.5rem;
         border: 1px solid #a3a6a3;
-        border-top-left-radius: 13px;
-        border-bottom-left-radius: 13px;
+        border-radius: 5px;
         font-family: 'RocknRoll One', sans-serif;
         &:focus {
-          border-top-left-radius: 13px;
-          border-bottom-left-radius: 13px;
           outline: none;
+          border-radius: 5px;
           border: 2px solid #080808;
         }
       }
       .show {
         border: 2px solid #d3405c;
       }
-      button {
-        margin-left: 0.2rem;
-        width: 150px;
-        background: #080808;
-        color: #fff;
-        border-top-right-radius: 13px;
-        border-bottom-right-radius: 13px;
-        font-size: 1rem;
-        border: none;
-        font-family: 'RocknRoll One', sans-serif;
-        &:hover {
-          background: #a32f7f;
-        }
-        &:focus {
-          outline: none;
-          border: 2px solid #080808;
-        }
-      }
     }
   }
+  .btn,
+  .random-btn {
+    margin-left: 0.2rem;
+    width: 150px;
+    background: #080808;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    border: none;
+    font-family: 'RocknRoll One', sans-serif;
+    border: 2px solid #080808;
+    &:hover {
+      background: #a32f7f;
+      cursor: pointer;
+    }
+    &:focus {
+      outline: none;
+      border: 2px solid #080808;
+    }
+  }
+  .random-btn {
+    width: fit-content;
+    padding: 0 10px;
+    grid-area: randomBtn;
+  }
+  .btn {
+    grid-area: submitBtn;
+    min-width: 100%;
+  }
+  .btn:active, .random-btn:active {
+    box-shadow: inset -4px -4px 8px rgba(182, 152, 174, 0.5),
+      inset 8px 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  .form-control {
+    grid-area: range;
+    max-width: 100%;
 
+    h4 {
+      font-size: 1.2rem;
+      margin: 0.7rem 0;
+    }
+    div {
+      display: flex;
+    }
+
+    .range-input {
+      flex-grow: 1;
+    }
+  }
   .error {
     position: absolute;
-    left: 250px;
+    left: 18%;
     top: -40px;
     font-family: 'RocknRoll One', sans-serif;
     color: #d3405c;
@@ -197,9 +266,11 @@ const Wrapper = styled.main`
   }
   .container {
     display: grid;
+    min-height: calc(100vh - 100px);
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fit, 1fr);
-    margin-top: 3rem;
+    /* grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)); */
+    grid-auto-rows: 15rem;
+    margin-top: 5rem;
   }
 `;
 export default App;
