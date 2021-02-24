@@ -53,12 +53,14 @@ const Wrapper = styled.article`
     height: 50px;
     border-color: transparent;
     border-radius: 50%;
+    background: #080808;
   }
-  
+
   .fadeIn {
     margin-top: 2rem;
     text-align: center;
     animation: ${fadeIn} 0.5s, ${fadeOut} 0.5s 2.7s;
+    color: white;
   }
 
   p {

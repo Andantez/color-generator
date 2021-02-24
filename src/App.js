@@ -163,7 +163,7 @@ const Wrapper = styled.main`
         color: #080808;
         font-size: 1.5rem;
         grid-area: label;
-        position: relative;
+        /* position: relative; */
       }
 
       .user-input {
@@ -303,7 +303,7 @@ const Wrapper = styled.main`
       font-size: 2rem;
     }
   }
-  @media screen and (max-width: 575.98px) {
+  @media screen and (max-width: 576px) {
     width: 100vw;
     header {
       margin: 0 auto;
@@ -321,6 +321,7 @@ const Wrapper = styled.main`
     .container {
       grid-template-columns: 1fr;
       grid-auto-rows: 7.5rem;
+      width: 100vw;
 
       article {
         position: relative;
@@ -328,9 +329,6 @@ const Wrapper = styled.main`
 
       .fadeIn {
         margin-top: 0;
-        position: absolute;
-        left: 250px;
-        bottom: 19px;
       }
     }
   }
@@ -339,7 +337,7 @@ const Wrapper = styled.main`
     width: 100vw;
     header {
       margin: 0;
-      height: 30vh;
+      height: 20vh;
       display: grid;
       place-items: center;
       text-align: center;
