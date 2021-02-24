@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Values from 'values.js';
 import SingleColor from './SingleColor';
 import { fadeIn, fadeOut } from './Animation';
+import { FaGithub } from 'react-icons/fa';
 
 const App = () => {
   const [colors, setColors] = useState(new Values('#de5648').all(10));
@@ -58,6 +59,13 @@ const App = () => {
   }, [error]);
   return (
     <Wrapper mainColor={mainColor} className="main-container">
+      <a
+        href="https://github.com/Andantez/color-generator"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FaGithub className="github" />
+      </a>
       <header>
         <h1>
           <a href="/">Tint & Shade Generator</a>
@@ -115,6 +123,7 @@ const Wrapper = styled.main`
   width: 90vw;
   margin: 0 auto;
   display: grid;
+  position: relative;
   header {
     background: linear-gradient(
       to right,
@@ -297,7 +306,18 @@ const Wrapper = styled.main`
     grid-auto-rows: 15rem;
     margin-top: 5rem;
   }
-
+  .github {
+    position: absolute;
+    left: 96%;
+    top: 1rem;
+    font-size: 2rem;
+    color: #080808;
+    transition: transform 0.5s linear;
+    &:hover {
+      transform: scale(1.5);
+      transition: transform 0.5s linear;
+    }
+  }
   @media screen and (max-width: 353px) {
     header h1 a {
       font-size: 2rem;
@@ -353,6 +373,18 @@ const Wrapper = styled.main`
     }
     .fadeIn {
       margin-top: 1rem;
+    }
+  }
+  @media screen and (max-width: 320px) {
+    header h1 a {
+      font-size: 1.4rem;
+    }
+    .form-container {
+      width: 95vw;
+      margin: 1.5rem auto;
+    }
+    .container {
+      width: 100vw;
     }
   }
 `;

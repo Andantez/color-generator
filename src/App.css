@@ -11,3 +11,7 @@
 body {
   background: #f3f0f1;
 }
+
+a:visited {
+  color: inherit;
+}
