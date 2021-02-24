@@ -57,7 +57,7 @@ const App = () => {
     return () => clearTimeout(cleanUpFunc);
   }, [error]);
   return (
-    <Wrapper mainColor={mainColor}>
+    <Wrapper mainColor={mainColor} className="main-container">
       <header>
         <h1>
           <a href="/">Tint & Shade Generator</a>
@@ -296,6 +296,66 @@ const Wrapper = styled.main`
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-auto-rows: 15rem;
     margin-top: 5rem;
+  }
+
+  @media screen and (max-width: 353px) {
+    header h1 a {
+      font-size: 2rem;
+    }
+  }
+  @media screen and (max-width: 575.98px) {
+    width: 100vw;
+    header {
+      margin: 0 auto;
+      height: 20vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+    }
+    .form-container form label {
+      font-size: 1.3rem;
+    }
+    .container {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 7.5rem;
+
+      article {
+        position: relative;
+      }
+
+      .fadeIn {
+        margin-top: 0;
+        position: absolute;
+        left: 250px;
+        bottom: 19px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100vw;
+    header {
+      margin: 0;
+      height: 30vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    header h1 a {
+      font-size: 3rem;
+    }
+    .container {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-auto-rows: 10rem;
+      width: 95vw;
+      margin: 4rem auto;
+    }
+    .fadeIn {
+      margin-top: 1rem;
+    }
   }
 `;
 export default App;
