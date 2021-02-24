@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Values from 'values.js';
 import SingleColor from './SingleColor';
+import { fadeIn, fadeOut } from './Animation';
 
 const App = () => {
-  const [colors, setColors] = useState(new Values('#4287f5').all(10));
+  const [colors, setColors] = useState(new Values('#de5648').all(10));
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState(false);
   const [colorWeight, setColorWeight] = useState(10);
-  const [mainColor, setMainColor] = useState('#4287f5');
+  const [mainColor, setMainColor] = useState('#de5648');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,7 +22,6 @@ const App = () => {
       setColors(colorsList);
       setMainColor(userInput);
     } catch (error) {
-      console.log(error);
       setError(true);
     }
   };
@@ -57,7 +57,7 @@ const App = () => {
     return () => clearTimeout(cleanUpFunc);
   }, [error]);
   return (
-    <Wrapper>
+    <Wrapper mainColor={mainColor}>
       <header>
         <h1>
           <a href="/">Tint & Shade Generator</a>
@@ -73,7 +73,7 @@ const App = () => {
             className={`user-input ${error && 'show'}`}
             type="text"
             id="color"
-            placeholder="#4287f5"
+            placeholder={mainColor}
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
           />
@@ -105,9 +105,7 @@ const App = () => {
       </section>
       <section className="container">
         {colors.map((color, index) => {
-          return (
-            <SingleColor {...color} key={index} index={index} hex={color.hex} />
-          );
+          return <SingleColor {...color} key={index} hex={color.hex} />;
         })}
       </section>
     </Wrapper>
@@ -117,7 +115,6 @@ const Wrapper = styled.main`
   width: 90vw;
   margin: 0 auto;
   display: grid;
-
   header {
     background: linear-gradient(
       to right,
@@ -166,6 +163,7 @@ const Wrapper = styled.main`
         color: #080808;
         font-size: 1.5rem;
         grid-area: label;
+        position: relative;
       }
 
       .user-input {
@@ -216,7 +214,8 @@ const Wrapper = styled.main`
     grid-area: submitBtn;
     min-width: 100%;
   }
-  .btn:active, .random-btn:active {
+  .btn:active,
+  .random-btn:active {
     box-shadow: inset -4px -4px 8px rgba(182, 152, 174, 0.5),
       inset 8px 8px 16px rgba(0, 0, 0, 0.1);
   }
@@ -227,6 +226,7 @@ const Wrapper = styled.main`
     h4 {
       font-size: 1.2rem;
       margin: 0.7rem 0;
+      color: #080808;
     }
     div {
       display: flex;
@@ -234,6 +234,50 @@ const Wrapper = styled.main`
 
     .range-input {
       flex-grow: 1;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    /* Input - Range styles */
+    input[type='range'] {
+      -webkit-appearance: none;
+      width: 100%;
+      background: transparent;
+    }
+    input[type='range']::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      border: 1px solid #080808;
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      background: ${(props) => props.mainColor};
+      cursor: pointer;
+
+      margin-top: -14px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+
+    input[type='range']::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      background: #080808;
+      border-radius: 5px;
+      border: 0.2px solid #010101;
+    }
+    input[type='range']:focus::-webkit-slider-runnable-track {
+      background: #080808;
+    }
+    /* ---------------------------- */
+    .range-value {
+      background: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin-left: 10px;
+      min-width: 60px;
+      border: 2px solid #080808;
     }
   }
   .error {
@@ -243,32 +287,13 @@ const Wrapper = styled.main`
     font-family: 'RocknRoll One', sans-serif;
     color: #d3405c;
   }
-
   .fadeIn {
-    animation: fadeInAnimation 0.5s, fadeOutAnimation 0.5s 2.7s;
-  }
-
-  @keyframes fadeInAnimation {
-    from {
-      transform: scale(0);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-  @keyframes fadeOutAnimation {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(0);
-    }
+    animation: ${fadeIn} 0.5s, ${fadeOut} 0.5s 2.7s;
   }
   .container {
     display: grid;
     min-height: calc(100vh - 100px);
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)); */
     grid-auto-rows: 15rem;
     margin-top: 5rem;
   }
