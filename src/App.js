@@ -90,7 +90,7 @@ const App = () => {
   );
 };
 const Wrapper = styled.main`
-  width: 90vw;
+  width: 80vw;
   margin: 0 auto;
   display: grid;
   position: relative;
