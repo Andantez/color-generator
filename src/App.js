@@ -205,6 +205,7 @@ const Wrapper = styled.main`
     border: none;
     font-family: 'RocknRoll One', sans-serif;
     border: 2px solid #080808;
+    padding: 10px 10px;
     &:hover {
       background: #a32f7f;
       cursor: pointer;
@@ -216,7 +217,7 @@ const Wrapper = styled.main`
   }
   .random-btn {
     width: fit-content;
-    padding: 0 10px;
+
     grid-area: randomBtn;
   }
   .btn {
@@ -322,6 +323,11 @@ const Wrapper = styled.main`
     header h1 a {
       font-size: 2rem;
     }
+
+    .btn,
+    .random-btn {
+      padding: 0 10px;
+    }
   }
   @media screen and (max-width: 576px) {
     width: 100vw;
@@ -350,7 +356,10 @@ const Wrapper = styled.main`
       article {
         position: relative;
       }
-
+      .btn,
+      .random-btn {
+        padding: 0 10px;
+      }
       .fadeIn,
       .copy-container {
         margin-top: 0;
@@ -379,6 +388,10 @@ const Wrapper = styled.main`
     .fadeIn,
     .copy-container {
       margin-top: 1rem;
+    }
+    .btn,
+    .random-btn {
+      padding: 0px 10px;
     }
   }
   @media screen and (max-width: 320px) {
