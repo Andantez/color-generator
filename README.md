@@ -1,4 +1,4 @@
-#[<img src="https://tintsandshades.netlify.com/favicon.ico" width="25px" />](https://tintsandshades.netlify.com) &nbsp;[Tints & Shades Generator](https://tintsandshades.netlify.com)
+# [<img src="https://tintsandshades.netlify.com/favicon.ico" width="25px" />](https://tintsandshades.netlify.com) &nbsp;[Tints & Shades Generator](https://tintsandshades.netlify.com)
 
 The purpose of this tool is to produce tints and shades of a given hex color in-between 2% (min value) and 50% (max value), or generate a random color.
 
