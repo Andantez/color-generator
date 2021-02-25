@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { FaCheckCircle } from 'react-icons/fa';
+import { FaCheck } from 'react-icons/fa';
+import { AiOutlineCopy } from 'react-icons/ai';
 import { fadeIn, fadeOut } from './Animation';
 
 const SingleColor = ({ weight, hex, rgb, type }) => {
   const [alert, setAlert] = useState(false);
+  const [showIcon, setShowIcon] = useState(true)
   const hexColor = `#${hex}`;
   const rgbColor = rgb.join(',');
 
@@ -18,22 +20,31 @@ const SingleColor = ({ weight, hex, rgb, type }) => {
   useEffect(() => {
     const clearAlert = setTimeout(() => {
       setAlert(false);
-    }, 3000);
+      setShowIcon(true)
+    }, 2000);
 
     return () => clearTimeout(clearAlert);
   }, [alert]);
 
   return (
     <Wrapper
-    onClick={handleCopy}
-    type={type}
-    style={{ background: `rgb(${rgbColor})` }}
+      onClick={() => {
+        handleCopy();
+        setShowIcon(false);
+      }}
+      type={type}
+      style={{ background: `rgb(${rgbColor})` }}
     >
       <p>{weight}%</p>
       <p>{hexColor}</p>
+      {showIcon && (
+        <p className="copy-container">
+          <AiOutlineCopy className="copy-icon" />
+        </p>
+      )}
       {alert && (
         <p className="fadeIn">
-          <FaCheckCircle className="check" />
+          <FaCheck className="check" />
         </p>
       )}
     </Wrapper>
@@ -49,20 +60,28 @@ const Wrapper = styled.article`
   color: ${(props) => props.type === 'shade' && '#fff'};
   cursor: pointer;
   .check {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-color: transparent;
     border-radius: 50%;
-    background: #080808;
   }
 
   .fadeIn {
     margin-top: 2rem;
     text-align: center;
     animation: ${fadeIn} 0.5s, ${fadeOut} 0.5s 2.7s;
-    color: white;
   }
-
+  .copy-container {
+    margin-top: 2rem;
+    text-align: center;
+    animation: ${fadeIn} 0.5s;
+  }
+  .copy-icon {
+    width: 35px;
+    height: 35px;
+    color: ${(props) => props.type === 'tint' && '#080808'};
+    transform: scaleX(-1);
+  }
   p {
     margin-bottom: 10px;
     letter-spacing: 1.5px;

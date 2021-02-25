@@ -347,7 +347,7 @@ const Wrapper = styled.main`
         position: relative;
       }
 
-      .fadeIn {
+      .fadeIn, .copy-container {
         margin-top: 0;
       }
     }
@@ -371,7 +371,7 @@ const Wrapper = styled.main`
       width: 95vw;
       margin: 4rem auto;
     }
-    .fadeIn {
+    .fadeIn, .copy-container {
       margin-top: 1rem;
     }
   }
