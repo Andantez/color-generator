@@ -308,8 +308,8 @@ const Wrapper = styled.main`
   }
   .github {
     position: absolute;
-    left: 96%;
-    top: 1rem;
+    right: 0;
+    top: 0.5rem;
     font-size: 2rem;
     color: #080808;
     transition: transform 0.5s linear;
@@ -327,7 +327,7 @@ const Wrapper = styled.main`
     width: 100vw;
     header {
       margin: 0 auto;
-      height: 20vh;
+      height: auto;
       display: grid;
       place-items: center;
       text-align: center;
@@ -338,6 +338,10 @@ const Wrapper = styled.main`
     .form-container form label {
       font-size: 1.3rem;
     }
+    .form-container {
+      width: 95vw;
+      margin: 2rem auto;
+    }
     .container {
       grid-template-columns: 1fr;
       grid-auto-rows: 7.5rem;
@@ -347,7 +351,8 @@ const Wrapper = styled.main`
         position: relative;
       }
 
-      .fadeIn, .copy-container {
+      .fadeIn,
+      .copy-container {
         margin-top: 0;
       }
     }
@@ -357,7 +362,7 @@ const Wrapper = styled.main`
     width: 100vw;
     header {
       margin: 0;
-      height: 20vh;
+      height: auto;
       display: grid;
       place-items: center;
       text-align: center;
@@ -369,9 +374,10 @@ const Wrapper = styled.main`
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       grid-auto-rows: 10rem;
       width: 95vw;
-      margin: 4rem auto;
+      margin: 2rem auto;
     }
-    .fadeIn, .copy-container {
+    .fadeIn,
+    .copy-container {
       margin-top: 1rem;
     }
   }
