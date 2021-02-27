@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { fadeIn, fadeOut } from './Animation';
 
+import { BiInfoCircle } from 'react-icons/bi';
+
 const Form = ({
   handleSubmit,
   error,
@@ -10,14 +12,16 @@ const Form = ({
   generateRandomColor,
   colorWeight,
   handleColorRange,
+  setModalIsOpen
 }) => {
   return (
     <Wrapper className="form-container" mainColor={mainColor}>
       <form onSubmit={handleSubmit}>
+        <BiInfoCircle className="showInfo" onClick={() => setModalIsOpen(true)}/>
         {error && (
           <p className="error fadeIn">Please Provide Valid Hex Color</p>
         )}
-        <label htmlFor="color">enter hex color</label>
+        <label htmlFor="color">enter valid color value</label>
         <input
           className={`user-input ${error && 'show'}`}
           type="text"
@@ -59,9 +63,9 @@ export default Form;
 
 const Wrapper = styled.section`
   display: grid;
-  margin-top: 3rem;
-
+  margin-top: 0.5rem;
   form {
+    position: relative;
     display: grid;
     gap: 20px;
     grid-template-columns: 1fr 1fr;
@@ -207,5 +211,14 @@ const Wrapper = styled.section`
   }
   .fadeIn {
     animation: ${fadeIn} 0.5s, ${fadeOut} 0.5s 2.7s;
+  }
+
+  .showInfo {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.6);
+    background: transparent;
   }
 `;

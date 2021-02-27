@@ -4,13 +4,15 @@ import Values from 'values.js';
 import SingleColor from './SingleColor';
 import { FaGithub } from 'react-icons/fa';
 import Form from './Form';
-
+import Modal from './Modal';
+import { fadeIn } from './Animation';
 const App = () => {
   const [colors, setColors] = useState(new Values('#de5648').all(10));
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState(false);
   const [colorWeight, setColorWeight] = useState(10);
   const [mainColor, setMainColor] = useState('#de5648');
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,6 +51,7 @@ const App = () => {
   useEffect(() => {
     setColors(new Values(mainColor).all(colorWeight));
   }, [colorWeight, mainColor]);
+
   // Clean up
   useEffect(() => {
     const cleanUpFunc = setTimeout(() => {
@@ -57,8 +60,25 @@ const App = () => {
 
     return () => clearTimeout(cleanUpFunc);
   }, [error]);
+
+  // Prevents from scrolling the page when the modal is open
+  useEffect(() => {
+    if (modalIsOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [modalIsOpen]);
   return (
     <Wrapper mainColor={mainColor} className="main-container">
+      {modalIsOpen && (
+        <div
+          onClick={() => setModalIsOpen(false)}
+          className={`modal-container ${modalIsOpen && 'show-modal'}`}
+        >
+          <Modal setModalIsOpen={setModalIsOpen} />
+        </div>
+      )}
       <a
         href="https://github.com/Andantez/color-generator"
         target="_blank"
@@ -80,6 +100,7 @@ const App = () => {
         generateRandomColor={generateRandomColor}
         colorWeight={colorWeight}
         handleColorRange={handleColorRange}
+        setModalIsOpen={setModalIsOpen}
       />
       <section className="container">
         {colors.map((color, index) => {
@@ -90,6 +111,7 @@ const App = () => {
   );
 };
 const Wrapper = styled.main`
+  height: 100vh;
   width: 80vw;
   margin: 0 auto;
   display: grid;
@@ -138,6 +160,26 @@ const Wrapper = styled.main`
       transform: scale(1.5);
       transition: transform 0.5s linear;
     }
+  }
+
+  .modal-container {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.32);
+    z-index: -1;
+    visibility: hidden;
+    animation: ${fadeIn} 0.3s linear;
+    overflow: hidden;
+  }
+
+  .show-modal {
+    visibility: visible;
+    z-index: 10;
   }
   @media screen and (max-width: 353px) {
     header h1 a {
