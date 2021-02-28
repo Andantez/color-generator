@@ -40,11 +40,13 @@ const App = () => {
   const handleColorRange = (e) => {
     setColorWeight((oldValue) => {
       let tempValue = Number(e.target.value);
-      if (tempValue < 2) {
+      if (tempValue < 1) {
         return oldValue;
-      } else {
-        return tempValue;
       }
+      if( tempValue > 50) {
+        return oldValue
+      }
+      return tempValue
     });
   };
   // Sets colors when user changes the color weight

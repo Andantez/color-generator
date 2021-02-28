@@ -39,12 +39,12 @@ const Modal = ({ setModalIsOpen }) => {
           </li>
         </ul>
         <li className="info-header">
-          Accepted percent point value goes from 2 to 50:
+          Accepted percent point value goes from 1 to 50:
         </li>
         <ul>
           <li>
-            <BsArrowReturnRight className="arrow-right" /> 2 will produce 50
-            tints and 50 shades
+            <BsArrowReturnRight className="arrow-right" /> 1 will produce 100
+            tints and 100 shades
           </li>
           <li>
             <BsArrowReturnRight className="arrow-right" /> 50 will produce 2

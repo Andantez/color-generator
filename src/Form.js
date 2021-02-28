@@ -44,7 +44,7 @@ const Form = ({
             <input
               className="range-input"
               type="range"
-              min="2"
+              min="1"
               max="50"
               value={colorWeight}
               onChange={handleColorRange}
