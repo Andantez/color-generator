@@ -146,7 +146,7 @@ const Wrapper = styled.main`
     display: grid;
     min-height: calc(100vh - 100px);
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows: max-content;
+    grid-auto-rows:12rem;
     margin-top: 5rem;
   }
   .github {
