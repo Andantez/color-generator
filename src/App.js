@@ -173,7 +173,7 @@ const Wrapper = styled.main`
     background: rgba(0, 0, 0, 0.32);
     z-index: -1;
     visibility: hidden;
-    animation: ${fadeIn} 0.3s linear;
+    animation: ${fadeIn} 0.25s linear;
     overflow: hidden;
   }
 

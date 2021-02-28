@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { fadeIn, fadeOut } from './Animation';
 
 import { BiInfoCircle } from 'react-icons/bi';
+import { VscError } from 'react-icons/vsc';
 
 const Form = ({
   handleSubmit,
@@ -12,15 +13,15 @@ const Form = ({
   generateRandomColor,
   colorWeight,
   handleColorRange,
-  setModalIsOpen
+  setModalIsOpen,
 }) => {
   return (
     <Wrapper className="form-container" mainColor={mainColor}>
       <form onSubmit={handleSubmit}>
-        <BiInfoCircle className="showInfo" onClick={() => setModalIsOpen(true)}/>
-        {error && (
-          <p className="error fadeIn">Please Provide Valid Hex Color</p>
-        )}
+        <BiInfoCircle
+          className="showInfo"
+          onClick={() => setModalIsOpen(true)}
+        />
         <label htmlFor="color">enter valid color value</label>
         <input
           className={`user-input ${error && 'show'}`}
@@ -202,17 +203,6 @@ const Wrapper = styled.section`
       border: 2px solid #080808;
     }
   }
-  .error {
-    position: absolute;
-    left: 18%;
-    top: -40px;
-    font-family: 'RocknRoll One', sans-serif;
-    color: #d3405c;
-  }
-  .fadeIn {
-    animation: ${fadeIn} 0.5s, ${fadeOut} 0.5s 2.7s;
-  }
-
   .showInfo {
     position: absolute;
     right: 0;
@@ -220,5 +210,10 @@ const Wrapper = styled.section`
     font-size: 1.4rem;
     color: rgba(0, 0, 0, 0.6);
     background: transparent;
+    cursor: pointer;
+    border-radius: 50%;
+    &:hover {
+      background: #fff;
+    }
   }
 `;

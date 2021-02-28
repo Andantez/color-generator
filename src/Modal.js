@@ -108,6 +108,7 @@ const Wrapper = styled.article`
     font-size: 1.5rem;
     color: #c0326f;
     background: transparent;
+    cursor: pointer;
   }
 `;
 export default Modal;
