@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-import { fadeIn, fadeOut } from './Animation';
-
 import { BiInfoCircle } from 'react-icons/bi';
-import { VscError } from 'react-icons/vsc';
 
 const Form = ({
   handleSubmit,
