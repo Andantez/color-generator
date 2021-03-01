@@ -183,6 +183,11 @@ const Wrapper = styled.main`
     visibility: visible;
     z-index: 10;
   }
+
+  article[type="base"] {
+    border: 2px solid rgba(0, 0, 0, 0.4);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+  }
   @media screen and (max-width: 353px) {
     header h1 a {
       font-size: 2rem;
