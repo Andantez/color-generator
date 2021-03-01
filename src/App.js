@@ -234,6 +234,9 @@ const Wrapper = styled.main`
         margin-top: 0;
       }
     }
+    .info {
+      height: auto;
+    }
   }
 
   @media screen and (max-width: 768px) {
