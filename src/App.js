@@ -7,11 +7,11 @@ import Form from './Form';
 import Modal from './Modal';
 import { fadeIn } from './Animation';
 const App = () => {
-  const [colors, setColors] = useState(new Values('#de5648').all(10));
+  const [colors, setColors] = useState(new Values('#fc527a').all(10));
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState(false);
   const [colorWeight, setColorWeight] = useState(10);
-  const [mainColor, setMainColor] = useState('#de5648');
+  const [mainColor, setMainColor] = useState('#fc527a');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
@@ -43,10 +43,10 @@ const App = () => {
       if (tempValue < 1) {
         return oldValue;
       }
-      if( tempValue > 50) {
-        return oldValue
+      if (tempValue > 50) {
+        return oldValue;
       }
-      return tempValue
+      return tempValue;
     });
   };
   // Sets colors when user changes the color weight
@@ -66,7 +66,7 @@ const App = () => {
   // Prevents from scrolling the page when the modal is open
   useEffect(() => {
     if (modalIsOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -121,11 +121,11 @@ const Wrapper = styled.main`
   header {
     background: linear-gradient(
       to right,
-      #e07034,
-      #de5648,
-      #d3405c,
-      #c0326f,
-      #a32f7f
+      #f44e96,
+      #fc527a,
+      #fc5d5e,
+      #f56d45,
+      #e77e2d
     );
     box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
       6px 6px 10px rgba(0, 0, 0, 0.2);
@@ -148,7 +148,7 @@ const Wrapper = styled.main`
     display: grid;
     min-height: calc(100vh - 100px);
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-rows:12rem;
+    grid-auto-rows: 12rem;
     margin-top: 5rem;
   }
   .github {
@@ -184,7 +184,7 @@ const Wrapper = styled.main`
     z-index: 10;
   }
 
-  article[type="base"] {
+  article[type='base'] {
     border: 2px solid rgba(0, 0, 0, 0.4);
     box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
   }

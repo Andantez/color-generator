@@ -117,7 +117,7 @@ const Wrapper = styled.section`
     border: 2px solid #080808;
     padding: 10px 10px;
     &:hover {
-      background: #a32f7f;
+      background: #fc527a;
       cursor: pointer;
     }
     &:focus {
