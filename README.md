@@ -14,7 +14,8 @@ To start the project on port 3000 and view it in your browser run:
 ```bash
 npm start
 ```
-
+## Credits
+[Values.js](https://github.com/noeldelgado/values.js) - JavaScript library used to get the tints and shades.
 
 
 ## License
