@@ -7,11 +7,11 @@ import Form from './Form';
 import Modal from './Modal';
 import { fadeIn } from './Animation';
 const App = () => {
-  const [colors, setColors] = useState(new Values('#fc527a').all(10));
+  const [colors, setColors] = useState(new Values('#FF57A0').all(10));
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState(false);
   const [colorWeight, setColorWeight] = useState(10);
-  const [mainColor, setMainColor] = useState('#fc527a');
+  const [mainColor, setMainColor] = useState('#FF57A0');
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const handleSubmit = (e) => {
@@ -37,6 +37,10 @@ const App = () => {
     setMainColor(randomColor);
   };
 
+  useEffect(() => {
+    generateRandomColor();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   const handleColorRange = (e) => {
     setColorWeight((oldValue) => {
       let tempValue = Number(e.target.value);
