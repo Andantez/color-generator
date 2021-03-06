@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { BiInfoCircle } from 'react-icons/bi';
-
+import { FaPercent } from 'react-icons/fa';
 const Form = ({
   handleSubmit,
   error,
@@ -11,6 +11,7 @@ const Form = ({
   colorWeight,
   handleColorRange,
   setModalIsOpen,
+  setColorWeight
 }) => {
   return (
     <Wrapper className="form-container" mainColor={mainColor}>
@@ -49,7 +50,9 @@ const Form = ({
               value={colorWeight}
               onChange={handleColorRange}
             />
-            <span className="range-value">{colorWeight}%</span>
+            <span className="range-value">
+              {colorWeight}<FaPercent />
+            </span>
           </div>
         </div>
       </form>
@@ -192,12 +195,25 @@ const Wrapper = styled.section`
     }
     /* ---------------------------- */
     .range-value {
-      background: #fff;
-      padding: 10px;
-      border-radius: 5px;
+      /* background: #fff; */
+      padding-bottom: 8px;
+      padding-top: 8px;
+      /* display: flex; */
+      align-items: center;
+      font-size: 1rem;
+      
+      /* border-radius: 5px; */
       margin-left: 10px;
       min-width: 60px;
-      border: 2px solid #080808;
+      /* border: 2px solid #080808; */
+      border-bottom: 1px solid black;
+      border-top: 1px solid black;
+
+      svg {
+        font-size: 0.8rem;
+        color: rgba(0,0,0,.55);
+      }
+      }
     }
   }
   .showInfo {

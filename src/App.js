@@ -105,6 +105,7 @@ const App = () => {
         setUserInput={setUserInput}
         generateRandomColor={generateRandomColor}
         colorWeight={colorWeight}
+        setColorWeight={setColorWeight}
         handleColorRange={handleColorRange}
         setModalIsOpen={setModalIsOpen}
       />
