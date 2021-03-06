@@ -59,6 +59,10 @@ const Wrapper = styled.article`
   font-family: 'RocknRoll One', sans-serif;
   color: ${(props) => props.type === 'shade' && '#fff'};
   cursor: pointer;
+
+  &:hover p svg {
+    color: #535053;
+  }
   .check {
     width: 35px;
     height: 35px;
