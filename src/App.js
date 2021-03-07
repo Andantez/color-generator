@@ -77,14 +77,14 @@ const App = () => {
   }, [modalIsOpen]);
   return (
     <Wrapper mainColor={mainColor} className="main-container">
-      {modalIsOpen && (
+     
         <div
           onClick={() => setModalIsOpen(false)}
           className={`modal-container ${modalIsOpen && 'show-modal'}`}
         >
           <Modal setModalIsOpen={setModalIsOpen} />
         </div>
-      )}
+      
       <a
         href="https://github.com/Andantez/color-generator"
         target="_blank"
@@ -180,13 +180,16 @@ const Wrapper = styled.main`
     background: rgba(0, 0, 0, 0.32);
     z-index: -1;
     visibility: hidden;
-    animation: ${fadeIn} 0.25s linear;
+    /* animation: ${fadeIn} 0.25s linear; */
+    transform: scale(0);
+    transition: all 250ms linear;
     overflow: hidden;
   }
 
   .show-modal {
     visibility: visible;
     z-index: 10;
+    transform: scale(1);
   }
 
   article[type='base'] {
@@ -200,7 +203,7 @@ const Wrapper = styled.main`
 
     .btn,
     .random-btn {
-      padding: 0 10px;
+      padding: 0 !important;
     }
   }
   @media screen and (max-width: 576px) {
@@ -268,7 +271,7 @@ const Wrapper = styled.main`
     }
     .btn,
     .random-btn {
-      padding: 5px 10px;
+      padding: 4px;
     }
   }
   @media screen and (max-width: 320px) {

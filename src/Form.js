@@ -215,7 +215,7 @@ const Wrapper = styled.section`
       }
       }
     }
-  }
+
   .showInfo {
     position: absolute;
     right: 0;
