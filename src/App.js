@@ -124,6 +124,7 @@ const Wrapper = styled.main`
   display: grid;
   position: relative;
   header {
+    text-align: center;
     background: linear-gradient(
       to right,
       #f44e96,
@@ -257,13 +258,37 @@ const Wrapper = styled.main`
       text-align: center;
     }
     header h1 a {
-      font-size: 3rem;
+      /* font-size: 2rem; */
     }
+
+    form {
+      gap: 10px;
+
+    }
+
+
     .container {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      grid-auto-rows: 10rem;
+      grid-auto-rows: 6rem;
       width: 95vw;
       margin: 2rem auto;
+      font-size: 0.8rem;
+
+      article {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        justify-content: flex-start;
+        font-family: 'Roboto Mono', monospace;
+      }
+      article p:nth-child(2) {
+        margin-bottom: 0;
+      }
+
+      .copy-container {
+        margin-left: 1rem;
+      }
     }
     .fadeIn,
     .copy-container {
@@ -271,7 +296,7 @@ const Wrapper = styled.main`
     }
     .btn,
     .random-btn {
-      padding: 4px;
+      padding: 5px;
     }
   }
   @media screen and (max-width: 320px) {

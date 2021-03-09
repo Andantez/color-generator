@@ -35,8 +35,10 @@ const SingleColor = ({ weight, hex, rgb, type }) => {
       type={type}
       style={{ background: `rgb(${rgbColor})` }}
     >
-      <p>{weight}%</p>
-      <p>{hexColor}</p>
+      <div>
+        <p>{weight}%</p>
+        <p>{hexColor}</p>
+      </div>
       {showIcon && (
         <p className="copy-container">
           <AiOutlineCopy className="copy-icon" />
@@ -56,7 +58,7 @@ const Wrapper = styled.article`
   /* Adapt the text color based on type prop for better Visability and Readability  */
 
   padding: 1rem 2rem;
-  font-family: 'RocknRoll One', sans-serif;
+  font-family: 'Roboto Mono', monospace;
   color: ${(props) => props.type === 'shade' && '#fff'};
   cursor: pointer;
 

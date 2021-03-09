@@ -78,7 +78,7 @@ const Wrapper = styled.section`
     margin: 0 auto;
     position: relative;
     text-transform: capitalize;
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     text-align: center;
     label {
       margin: 0 1rem;
@@ -95,7 +95,7 @@ const Wrapper = styled.section`
       padding-left: 0.5rem;
       border: 1px solid #a3a6a3;
       border-radius: 5px;
-      font-family: 'RocknRoll One', sans-serif;
+      font-family: 'Roboto Mono', monospace;
       &:focus {
         outline: none;
         border-radius: 5px;
@@ -116,9 +116,9 @@ const Wrapper = styled.section`
     border-radius: 5px;
     font-size: 0.8rem;
     border: none;
-    font-family: 'RocknRoll One', sans-serif;
+    font-family: 'Roboto Mono', monospace;
     border: 2px solid #080808;
-    padding: 10px 10px;
+    padding: 10px;
     &:hover {
       background: #fc527a;
       cursor: pointer;
@@ -201,7 +201,7 @@ const Wrapper = styled.section`
       /* display: flex; */
       align-items: center;
       font-size: 1rem;
-      
+
       /* border-radius: 5px; */
       margin-left: 10px;
       min-width: 60px;
@@ -211,10 +211,10 @@ const Wrapper = styled.section`
 
       svg {
         font-size: 0.8rem;
-        color: rgba(0,0,0,.55);
-      }
+        color: rgba(0, 0, 0, 0.55);
       }
     }
+  }
 
   .showInfo {
     position: absolute;
