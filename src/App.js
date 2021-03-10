@@ -263,9 +263,7 @@ const Wrapper = styled.main`
 
     form {
       gap: 10px;
-
     }
-
 
     .container {
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -285,14 +283,11 @@ const Wrapper = styled.main`
       article p:nth-child(2) {
         margin-bottom: 0;
       }
-
-      .copy-container {
-        margin-left: 1rem;
-      }
     }
     .fadeIn,
     .copy-container {
       margin-top: 1rem;
+      margin-left: 1rem;
     }
     .btn,
     .random-btn {
