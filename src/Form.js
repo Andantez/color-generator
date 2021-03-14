@@ -181,6 +181,20 @@ const Wrapper = styled.section`
       box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
     }
 
+    // Add firefox support 
+    input[type=range]::-moz-range-thumb  {
+      -webkit-appearance: none;
+      border: 1px solid #080808;
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
+      background: ${(props) => props.mainColor};
+      cursor: pointer;
+
+      margin-top: -14px;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+    }
+
     input[type='range']::-webkit-slider-runnable-track {
       width: 100%;
       height: 8.4px;
@@ -191,6 +205,20 @@ const Wrapper = styled.section`
       border: 0.2px solid #010101;
     }
     input[type='range']:focus::-webkit-slider-runnable-track {
+      background: #080808;
+    }
+
+    // Support for firefox
+    input[type=range]::-moz-range-track {
+      width: 100%;
+      height: 8.4px;
+      cursor: pointer;
+      box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+      background: #080808;
+      border-radius: 5px;
+      border: 0.2px solid #010101;
+    }
+    input[type=range]:focus::-moz-range-track {
       background: #080808;
     }
     /* ---------------------------- */
