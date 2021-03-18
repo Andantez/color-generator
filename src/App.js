@@ -40,7 +40,7 @@ const App = () => {
   useEffect(() => {
     generateRandomColor();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
   const handleColorRange = (e) => {
     setColorWeight((oldValue) => {
       let tempValue = Number(e.target.value);
@@ -77,14 +77,13 @@ const App = () => {
   }, [modalIsOpen]);
   return (
     <Wrapper mainColor={mainColor} className="main-container">
-     
-        <div
-          onClick={() => setModalIsOpen(false)}
-          className={`modal-container ${modalIsOpen && 'show-modal'}`}
-        >
-          <Modal setModalIsOpen={setModalIsOpen} />
-        </div>
-      
+      <div
+        onClick={() => setModalIsOpen(false)}
+        className={`modal-container ${modalIsOpen && 'show-modal'}`}
+      >
+        <Modal setModalIsOpen={setModalIsOpen} />
+      </div>
+
       <a
         href="https://github.com/Andantez/color-generator"
         target="_blank"

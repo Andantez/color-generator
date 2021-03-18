@@ -11,7 +11,7 @@ const Form = ({
   colorWeight,
   handleColorRange,
   setModalIsOpen,
-  setColorWeight
+  setColorWeight,
 }) => {
   return (
     <Wrapper className="form-container" mainColor={mainColor}>
@@ -51,7 +51,8 @@ const Form = ({
               onChange={handleColorRange}
             />
             <span className="range-value">
-              {colorWeight}<FaPercent />
+              {colorWeight}
+              <FaPercent />
             </span>
           </div>
         </div>

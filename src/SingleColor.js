@@ -6,7 +6,7 @@ import { fadeIn, fadeOut } from './Animation';
 
 const SingleColor = ({ weight, hex, rgb, type }) => {
   const [alert, setAlert] = useState(false);
-  const [showIcon, setShowIcon] = useState(true)
+  const [showIcon, setShowIcon] = useState(true);
   const hexColor = `#${hex}`;
   const rgbColor = rgb.join(',');
 
@@ -20,7 +20,7 @@ const SingleColor = ({ weight, hex, rgb, type }) => {
   useEffect(() => {
     const clearAlert = setTimeout(() => {
       setAlert(false);
-      setShowIcon(true)
+      setShowIcon(true);
     }, 2000);
 
     return () => clearTimeout(clearAlert);
@@ -52,7 +52,6 @@ const SingleColor = ({ weight, hex, rgb, type }) => {
     </Wrapper>
   );
 };
-
 
 const Wrapper = styled.article`
   /* Adapt the text color based on type prop for better Visability and Readability  */

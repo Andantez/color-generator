@@ -11,7 +11,6 @@ const Modal = ({ setModalIsOpen }) => {
         onClick={() => setModalIsOpen(false)}
       />
       <ul className="">
-        <hr />
         <li className="info-header">Accepts &lt;color value&gt;: </li>
         <ul>
           <li>
@@ -52,7 +51,6 @@ const Modal = ({ setModalIsOpen }) => {
           </li>
         </ul>
       </ul>
-      <hr />
     </Wrapper>
   );
 };
@@ -60,7 +58,7 @@ const Modal = ({ setModalIsOpen }) => {
 const Wrapper = styled.article`
   /* width: 90vw; */
   width: 90vw;
-  height: 30vh;
+  /* height: 30vh; */
   max-width: 620px;
   background: white;
   border-radius: 5px;

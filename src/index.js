@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './App.css'
+import './App.css';
 import { createGlobalStyle } from 'styled-components';
 
-  const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   *,
 ::after,
 ::before {
@@ -24,7 +24,7 @@ a:visited {
   `;
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle/>
+    <GlobalStyle />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
