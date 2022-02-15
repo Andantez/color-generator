@@ -164,7 +164,7 @@ const Wrapper = styled.main`
     color: #080808;
     transition: transform 0.5s linear;
     &:hover {
-      transform: scale(1.5);
+      transform: scale(1.1);
       transition: transform 0.5s linear;
     }
   }

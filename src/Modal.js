@@ -10,7 +10,7 @@ const Modal = ({ setModalIsOpen }) => {
         className="close-btn"
         onClick={() => setModalIsOpen(false)}
       />
-      <ul className="">
+      <ul>
         <li className="info-header">Accepts &lt;color value&gt;: </li>
         <ul>
           <li>
