@@ -11,7 +11,6 @@ const Form = ({
   colorWeight,
   handleColorRange,
   setModalIsOpen,
-  setColorWeight,
 }) => {
   return (
     <Wrapper className="form-container" mainColor={mainColor}>
@@ -182,8 +181,8 @@ const Wrapper = styled.section`
       box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
     }
 
-    // Add firefox support 
-    input[type=range]::-moz-range-thumb  {
+    // Add firefox support
+    input[type='range']::-moz-range-thumb {
       -webkit-appearance: none;
       border: 1px solid #080808;
       height: 36px;
@@ -210,7 +209,7 @@ const Wrapper = styled.section`
     }
 
     // Support for firefox
-    input[type=range]::-moz-range-track {
+    input[type='range']::-moz-range-track {
       width: 100%;
       height: 8.4px;
       cursor: pointer;
@@ -219,7 +218,7 @@ const Wrapper = styled.section`
       border-radius: 5px;
       border: 0.2px solid #010101;
     }
-    input[type=range]:focus::-moz-range-track {
+    input[type='range']:focus::-moz-range-track {
       background: #080808;
     }
     /* ---------------------------- */

@@ -41,6 +41,7 @@ const App = () => {
     generateRandomColor();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  
   const handleColorRange = (e) => {
     setColorWeight((oldValue) => {
       let tempValue = Number(e.target.value);
@@ -52,11 +53,12 @@ const App = () => {
       }
       return tempValue;
     });
+    setColors(new Values(mainColor).all(colorWeight));
   };
   // Sets colors when user changes the color weight
-  useEffect(() => {
-    setColors(new Values(mainColor).all(colorWeight));
-  }, [colorWeight, mainColor]);
+  // useEffect(() => {
+  //   setColors(new Values(mainColor).all(colorWeight));
+  // }, [colorWeight, mainColor]);
 
   // Clean up
   useEffect(() => {
@@ -68,13 +70,13 @@ const App = () => {
   }, [error]);
 
   // Prevents from scrolling the page when the modal is open
-  useEffect(() => {
-    if (modalIsOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [modalIsOpen]);
+  // useEffect(() => {
+  //   if (modalIsOpen) {
+  //     document.body.style.overflow = 'hidden';
+  //   } else {
+  //     document.body.style.overflow = 'unset';
+  //   }
+  // }, [modalIsOpen]);
   return (
     <Wrapper mainColor={mainColor} className="main-container">
       <div
@@ -178,18 +180,20 @@ const Wrapper = styled.main`
     top: 0;
     left: 0;
     background: rgba(0, 0, 0, 0.32);
-    z-index: -1;
+    /* z-index: -1; */
     visibility: hidden;
+    opacity: 0;
     /* animation: ${fadeIn} 0.25s linear; */
-    transform: scale(0);
-    transition: all 250ms linear;
+    /* transform: scale(0); */
+    transition: opacity 300ms ease;
     overflow: hidden;
   }
 
   .show-modal {
     visibility: visible;
     z-index: 10;
-    transform: scale(1);
+    /* transform: scale(1); */
+    opacity: 1;
   }
 
   article[type='base'] {

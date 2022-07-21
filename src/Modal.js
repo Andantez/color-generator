@@ -19,11 +19,11 @@ const Modal = ({ setModalIsOpen }) => {
           </li>
           <li>
             <BsArrowReturnRight className="arrow-right" />
-            RGB/A
+            RGB/A e.g. rgba(150,175,250, 0.75)
           </li>
           <li>
             <BsArrowReturnRight className="arrow-right" />
-            HSL/A
+            HSL/A e.g. hsl(60 85% 65% / 0.8)
           </li>
           <li>
             <BsArrowReturnRight className="arrow-right" />
@@ -85,7 +85,7 @@ const Wrapper = styled.article`
     font-weight: bold;
   }
 
-  ul > ul > li:nth-child(1) {
+  ul > ul > li {
     margin-top: 0.5rem;
   }
 

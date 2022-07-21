@@ -55,7 +55,7 @@ const SingleColor = ({ weight, hex, rgb, type }) => {
 
 const Wrapper = styled.article`
   /* Adapt the text color based on type prop for better Visability and Readability  */
-
+  transition: background-color 250ms ease;
   padding: 1rem 2rem;
   font-family: 'Roboto Mono', monospace;
   color: ${(props) => props.type === 'shade' && '#fff'};
